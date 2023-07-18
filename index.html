@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioner Bank</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-aria">
+
+        <h1 class="bank-alain" >Welcome to Pioneer Bank</h1>
+<div class="submit-area">
+    <h4>Login</h4>
+    <input  type="email" class="form-control" placeholder="Email"> <br>
+    <input  class="form-control" type="password" placeholder="password">
+    <br>
+    <button id="login" class="btn btn btn-success" type="">Enter</button>
+</div>
+    </div>
+    <div id="transection" >
+        <div class="row">
+            <div class="col-md-4 ">
+
+                <div class="deposit statuse"  >
+                    <h5>Deposit</h5>
+                    <h2>$<span id="currentDeposit" >00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="withrow statuse">
+                    <h5>Withrow</h5>
+                    <h2>$00</h2></div>
+            </div>
+            <div class="col-md-4  ">
+               <div class="balance statuse" >
+                <h5>Balance</h5>
+                <h2>$ <span id="currentBlance" >1200</span></h2>
+               </div>
+               
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="submit-area">
+                    <h4>Deposit</h4>
+                    <input id="depositAmount" type="text" class="form-control" placeholder="$ amound you want to Deposit"> <br>
+                    <button id="addDeposit" class="btn btn btn-success">Deposit</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="submit-area ">
+                    <h4>Withrow</h4>
+                    <input type="text" class="form-control" placeholder="$ amound you want to withrow"> 
+                    <br>
+                    <button class="btn btn btn-success">withrow</button>
+                </div>
+            </div>
+    </div>
+    
+    </div>
+    <script>
+        //LoginButton handelar
+const loginBtn = document.getElementById("login");
+loginBtn.addEventListener("click",function (){ 
+    const loginAria = document.getElementById("login-aria");
+    loginAria.style.display= "none";
+    const transectionArea = document.getElementById("transection");
+    transectionArea.style.display="block";
+})
+    //depositbtn handelar
+const depositBtn = document.getElementById("addDeposit");
+depositBtn.addEventListener("click",function(){
+    const depositAmount =document.getElementById("depositAmount").value;
+    const depositNumber= parseFloat(depositAmount);
+
+    const currentDeposit = document.getElementById("currentDeposit").innerText;
+    const currentDepositNumber = parseFloat(currentDeposit);
+   const total = depositNumber + currentDepositNumber;
+   // console.log(total);
+    document.getElementById("currentDeposit").innerText=total;
+    document.getElementById("depositAmount").value="";
+    // const currentBlance = document.getElementById("currentBlance").innerText;
+    // const currentBlanceNumber =parseFloat(currentBlance);
+    // const totalBlance=depositNumber+currentBlanceNumber;
+    // document.getElementById("currentBlance").innerText=totalBlance;
+
+update("currentBlance",depositNumber);
+})
+function update(id,depositNumber){
+
+
+    const currentBlance = document.getElementById(id).innerText;
+    const currentBlanceNumber =parseFloat(currentBlance);
+    const totalBlance=depositNumber+currentBlanceNumber;
+    document.getElementById(id).innerText=totalBlance;
+
+}
+
+
+
+    </script>
+</body>
+</html>
